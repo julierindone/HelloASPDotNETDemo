@@ -6,15 +6,21 @@
 
 <h1>Coding Events</h1>
 
-<br /><a asp-controller="Events" asp-action="Add">Add Event</a><br>
-
-@if (ViewBag.events.Count == 0)
-{
-    <p><br>No events yet!</p>
-}
-
-<ul>
-    @foreach(string meeting in ViewBag.events){
-        <li>@meeting</li>;
+<table class="table-responsive-xl table-striped table-bordered">
+    <tr>
+        <td>Event Name</td>
+        <td>Description</td>
+    </tr>
+    
+    @foreach(KeyValuePair<string, string>meeting in ViewBag.events)
+    {
+        <tr>
+            <td>@meeting.Key</td>
+            <td>@meeting.Value</td>
+        </tr>;
     }
-</ul>
+</table>
+
+<a asp-controller="Events" asp-action="Add">Add Event</a>
+
+
